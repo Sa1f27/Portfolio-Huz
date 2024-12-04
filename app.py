@@ -3,66 +3,56 @@ import requests
 from streamlit_lottie import st_lottie
 from streamlit_timeline import timeline
 import streamlit.components.v1 as components
-from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader, LLMPredictor, ServiceContext
 from constant import *
 from PIL import Image
-import openai
-from langchain.chat_models import ChatOpenAI
+from groq import Groq
 
-st.set_page_config(page_title='Template' ,layout="wide",page_icon='👧🏻')
+# Configure Streamlit page
+st.set_page_config(page_title='Portfolio Chatbot', layout="wide", page_icon='🤖')
 
-# -----------------  chatbot  ----------------- #
-# Set up the OpenAI key
-openai_api_key = st.sidebar.text_input('Enter your OpenAI API Key and hit Enter', type="password")
-openai.api_key = (openai_api_key)
+# Groq Configuration - Hardcoded API Key
+GROQ_API_KEY = "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"  # Replace with your Groq API key
+client = Groq(api_key=GROQ_API_KEY)
 
-# load the file
-documents = SimpleDirectoryReader(input_files=["bio.txt"]).load_data()
+# Load bio data (if you still want to use bio.txt or another source)
+with open("bio.txt", "r") as file:
+    bio_info = file.read()
 
-pronoun = info["Pronoun"]
-name = info["Name"]
-def ask_bot(input_text):
-    # define LLM
-    llm = ChatOpenAI(
-        model_name="gpt-3.5-turbo",
-        temperature=0,
-        openai_api_key=openai.api_key,
-    )
-    llm_predictor = LLMPredictor(llm=llm)
-    service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor)
-    
-    # load index
-    index = GPTVectorStoreIndex.from_documents(documents, service_context=service_context)    
-    
-    # query LlamaIndex and GPT-3.5 for the AI's response
-    PROMPT_QUESTION = f"""You are Buddy, an AI assistant dedicated to assisting {name} in her job search by providing recruiters with relevant and concise information. 
-    If you do not know the answer, politely admit it and let recruiters know how to contact {name} to get more information directly from {pronoun}. 
-    Don't put "Buddy" or a breakline in the front of your answer.
-    Human: {input}
+def ask_groq(input_text):
+    prompt = f"""
+    You are an AI assistant helping to present the portfolio of the following individual based on their biography. 
+    Here's the bio:
+    {bio_info}
+
+    Respond concisely to the following query from a recruiter or visitor:
+    {input_text}
     """
-    
-    output = index.as_query_engine().query(PROMPT_QUESTION.format(input=input_text))
-    print(f"output: {output}")
-    return output.response
+    try:
+        response = client.chat.completions.create(
+            messages=[{"role": "user", "content": prompt}],
+            model="llama-3.1-8b-instant",
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        return f"Error getting AI insights: {str(e)}"
 
-# get the user's input by calling the get_text function
+# Get user input
 def get_text():
-    input_text = st.text_input("After providing OpenAI API Key on the sidebar, you can send your questions and hit Enter to know more about me from my AI agent, Buddy!", key="input")
-    return input_text
+    return st.text_input(
+        "Ask any question about my portfolio!",
+        key="input",
+    )
 
-#st.markdown("Chat With Me Now")
 user_input = get_text()
 
+# Generate response
 if user_input:
-  #text = st.text_area('Enter your questions')
-  if not openai_api_key.startswith('sk-'):
-    st.warning('⚠️Please enter your OpenAI API key on the sidebar.', icon='⚠')
-  if openai_api_key.startswith('sk-'):
-    st.info(ask_bot(user_input))
+    response = ask_groq(user_input)
+    st.info(response)
+
 
 # -----------------  loading assets  ----------------- #
-st.sidebar.markdown(info['Photo'],unsafe_allow_html=True)
-    
+
 def load_lottieurl(url: str):
     r = requests.get(url)
     if r.status_code != 200:

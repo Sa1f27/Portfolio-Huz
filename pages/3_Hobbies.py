@@ -8,7 +8,18 @@ def local_css(file_name):
         
 local_css("style/style.css")
 
-st.sidebar.markdown(info['Photo'],unsafe_allow_html=True)
+import streamlit as st
+from PIL import Image
+
+# Path to the image file
+image_path = "images/huz-bat.png"  # Adjust the path as needed
+
+# Display the image in the sidebar
+st.sidebar.image(image_path, width=200)  # You can adjust the width as needed
+
+# If you want to add a clickable link, you can use markdown like this:
+st.sidebar.markdown("[LinkedIn](https://www.linkedin.com/in/huzaifah-27o3/)")
+
 
 img_1 = Image.open("images/1.jpg")
 img_2 = Image.open("images/2.png")

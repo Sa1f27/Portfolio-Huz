@@ -1,41 +1,37 @@
-About Vicky:
-Vicky is a seasoned professional with expertise in AI, Data Science, Blockchain, and Cloud technologies. Holding an undergraduate degree in Computer Science from the University of Techville (2010), Vicky is committed to delivering innovative solutions and offers valuable resources at cognitiveclass.ai.
+About Mohammed Huzaifah:
+Mohammed Huzaifah is an ambitious Machine Learning Engineer with a strong foundation in Artificial Intelligence, Data Science, and MLOps. Currently pursuing a Bachelor of Engineering in Computer Science with a specialization in AI and Machine Learning, he maintains a CGPA of 8.6. Passionate about solving real-world challenges, Huzaifah has a proven ability to design, develop, and deploy scalable AI solutions, leveraging advanced concepts like deep learning, predictive analytics, and fine-tuned generative models. His dedication to innovation is evident through participation in hackathons and successful project implementations.
 
 Work Experience:
-Data Scientist at IBM (2015-2019); Software Developer at IBM (2010-2015)
+Gained hands-on experience by building and deploying AI-driven projects, including KidsCare-Pro, an AI-powered pediatric health solution, and SoulScan, a high-accuracy disease prediction platform.
+Actively contribute to open-source projects and solve problems on platforms like Kaggle, LeetCode, and GitHub, honing skills in machine learning, data analysis, and software development.
+Participated in hackathons, demonstrating teamwork and innovation to deliver impactful solutions under tight deadlines.
 
-Career Goal:
-Vicky's career goal is to leverage their expertise in AI and emerging technologies to drive meaningful innovation and create solutions that positively impact businesses and society.
+Skills:
+Programming Languages: Python (primary), C, C++, Java, HTML, CSS, JavaScript (Basic)
+Machine Learning Frameworks: TensorFlow, PyTorch, Scikit-learn, Keras, XGBoost, OpenCV
+Data Management: SQL, Pandas, NumPy, Apache Spark
+Cloud Technologies: AWS, Azure
+Data Visualization: Matplotlib, Seaborn, Plotly
+MLOps: Docker, Kubernetes, MLflow, DVC, Jenkins
 
-Skills: 
-AI, Data Science, Blockchain, Cloud, Python
+Certifications and Achievements:
+Participated in multiple hackathons, earning recognition for delivering AI-driven solutions.
+KidsCare-Pro: Recognized for innovative use of AI in pediatric health management.
+SoulScan: Delivered an AI-powered disease prediction platform, praised for high accuracy and practical application.
+Proactively working on enhancing skills with hands-on projects and learning.
 
-Certification:
-IBM Applied AI Professional Certificate (2023)
-
-Achievements:
-Spearheaded AI projects at IBM, resulting in a 30% increase in user engagement.
-Utilized IBM's watsonx service to help over 1000 companies from various domains automate their HR processes, from hiring to onboarding, contributing to a 100% positive feedback rate from companies.
-
-Contact:
-LinkedIn: https://www.linkedin.com/in/vicky-tck
-Phone: 123-456-789
-Location: Toronto, Ontario
-
-Strengths and Advantages:
-Vicky's strengths lie in a profound passion for technology, innovative problem-solving, and client-centric solutions.
-
-Weaknesses and Disadvantages:
-Vicky's unwavering pursuit of excellence may occasionally lead to in-depth analysis, but it ensures the delivery of high-quality services.
+Contact Information:
+Email: huzaif027@gmail.com
+Phone: 6300940175 , 9014038540
+GitHub: https://github.com/Sa1f27
+LinkedIn: https://www.linkedin.com/in/huzaifah-27o3/
+Location: Hyderabad, Telangana
 
 Interests and Hobbies:
-Vicky's passion for technology extends into leisure hours, where they delve into the cutting-edge realm of GenAI, continuously pushing the boundaries of what can be achieved in various projects. In addition, Vicky finds joy in the simple pleasures of life, such as walking their dogs, swimming, and sharing coffee moments with friends and family.
-
-Portfolio:
-Explore Vicky's portfolio of innovative projects at cognitiveclass.ai, showcasing expertise and tailored solutions. This website also serves as a showcase for some of Vicky's remarkable projects. Constructed using generative AI and Python, the website aims to inspire visitors with innovative ideas on seamlessly integrating generative AI into their own portfolio websites. Feel free to explore and ignite your creativity!
+Huzaifah is passionate about learning and exploring the latest advancements in AI, particularly generative models and MLOps. Outside of academics, he enjoys football (a loyal Real Madrid supporter), participating in hackathons, and spending quality time with friends and family.
 
 Availability:
-Vicky is actively seeking new opportunities and is ready to start immediately.
+Huzaifah is actively seeking internship and collaborative opportunities and is available to start immediately.
 
 References:
 References are available upon request.
