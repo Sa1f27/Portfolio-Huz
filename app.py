@@ -11,7 +11,7 @@ from groq import Groq
 st.set_page_config(page_title='Portfolio Chatbot', layout="wide", page_icon='🤖')
 
 # Groq Configuration - Hardcoded API Key
-GROQ_API_KEY = "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"  # Replace with your Groq API key
+GROQ_API_KEY = "key"  # Replace with your Groq API key
 client = Groq(api_key=GROQ_API_KEY)
 
 # Load bio data (if you still want to use bio.txt or another source)
