@@ -14,7 +14,7 @@ st.set_page_config(page_title="Huzaifah's Portfolio", layout="wide", page_icon='
 
 #-----------------Groq Configuration------------------#
 
-GROQ_API_KEY = st.secrets["api_keys"]["groq_api_key"]  # Replace with your Groq API key
+GROQ_API_KEY = st.secrets["groq_api_key"]  # Replace with your Groq API key
 client = Groq(api_key=GROQ_API_KEY)
 
 # Load bio data (if you still want to use bio.txt or another source)
