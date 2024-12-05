@@ -33,8 +33,7 @@ st.markdown(
 #============projects================
 def show_project_card(project):
     with st.container():
-        with st.container():
-            st.image(project["image"], use_container_width=True)
+        st.image(project["image"], use_container_width=True)
         
         st.markdown(f"<h3 class='project-title'>{project['title']}</h3>", unsafe_allow_html=True)
         st.write(project["description"])
