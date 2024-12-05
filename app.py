@@ -3,12 +3,33 @@ import requests
 from streamlit_lottie import st_lottie
 from streamlit_timeline import timeline
 import streamlit.components.v1 as components
-from constant import *
+from config import info, endorsements
 from PIL import Image
 from groq import Groq
 
 # Configure Streamlit page
-st.set_page_config(page_title='Portfolio Chatbot', layout="wide", page_icon='🤖')
+st.set_page_config(page_title="Huzaifah's Portfolio", layout="wide", page_icon='🤖')
+
+st.markdown(
+    """
+    <style>
+    .big-header {
+        font-size: 90px;
+        font-weight: bold;
+        color: #4CAF50;
+        text-align: center;
+    }
+    .sub-header {
+        font-size: 30px;
+        color: #333;
+        text-align: center;
+    }
+    </style>
+    <div class="big-header"> Welcome to My Portfolio 🤖</div>
+    <div class="sub-header"> Hi, I'm Huzaifah - AI/ML Enthusiast and Developer </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # Groq Configuration - Hardcoded API Key
 GROQ_API_KEY = "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"  # Replace with your Groq API key
@@ -36,24 +57,9 @@ def ask_groq(input_text):
     except Exception as e:
         return f"Error getting AI insights: {str(e)}"
 
-# Get user input
-def get_text():
-    return st.text_input(
-        "Ask any question about my portfolio!",
-        key="input",
-    )
-
-user_input = get_text()
-
-# Generate response
-if user_input:
-    response = ask_groq(user_input)
-    st.info(response)
-
-
 # -----------------  loading assets  ----------------- #
 
-def load_lottieurl(url: str):
+def load_lottie_url(url: str):
     r = requests.get(url)
     if r.status_code != 200:
         return None
@@ -64,18 +70,7 @@ def local_css(file_name):
         st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
         
 local_css("style/style.css")
-
-# loading assets
-lottie_gif = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_x17ybolp.json")
-python_lottie = load_lottieurl("https://assets6.lottiefiles.com/packages/lf20_2znxgjyt.json")
-java_lottie = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_zh6xtlj9.json")
-my_sql_lottie = load_lottieurl("https://assets4.lottiefiles.com/private_files/lf30_w11f2rwn.json")
-git_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_03cuemhb.json")
-github_lottie = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_6HFXXE.json")
-docker_lottie = load_lottieurl("https://assets4.lottiefiles.com/private_files/lf30_35uv2spq.json")
-figma_lottie = load_lottieurl("https://lottie.host/5b6292ef-a82f-4367-a66a-2f130beb5ee8/03Xm3bsVnM.json")
-js_lottie = load_lottieurl("https://lottie.host/fc1ad1cd-012a-4da2-8a11-0f00da670fb9/GqPujskDlr.json")
-
+lottie_gif = load_lottie_url("https://assets9.lottiefiles.com/packages/lf20_x17ybolp.json")
 
 
 # ----------------- info ----------------- #
@@ -84,6 +79,33 @@ def gradient(color1, color2, color3, content1, content2):
                 f'<span style="color:{color3};">{content1}</span><br>'
                 f'<span style="color:white;font-size:17px;">{content2}</span></h1>', 
                 unsafe_allow_html=True)
+
+import uuid
+
+with st.container():
+    col5, col6 = st.columns([8, 3])
+
+# Get user input
+with col5:
+    def get_text():
+        return st.text_input(
+            "Ask any question about my portfolio!",
+            key="input"  # Unique key using uuid
+        )
+
+    user_input = get_text()
+
+    # Generate response
+    if user_input:
+        response = ask_groq(user_input)
+        st.markdown(response)
+    else:
+        st.write("nooooo")
+
+
+with col6:
+    st_lottie(lottie_gif, height=280, key=str(uuid.uuid4()))
+
 
 with st.container():
     col1,col2 = st.columns([8,3])
@@ -96,74 +118,55 @@ with col1:
     
     
 with col2:
-    st_lottie(lottie_gif, height=280, key="data")
+    # Path to the image file
+    image_path = "images/huz-bat.png" 
+    st.image(image_path, width=200)
+
+
+# -----------------  resume  -----------------  #
+
+import base64
+from constant import *
+
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
         
+local_css("style/style.css")
 
-# ----------------- skillset ----------------- #
-with st.container():
-    st.subheader('⚒️ Skills')
-    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
-    with col1:
-        st_lottie(python_lottie, height=70,width=70, key="python", speed=2.5)
-    with col2:
-        st_lottie(java_lottie, height=70,width=70, key="java", speed=4)
-    with col3:
-        st_lottie(my_sql_lottie,height=70,width=70, key="mysql", speed=2.5)
-    with col4:
-        st_lottie(git_lottie,height=70,width=70, key="git", speed=2.5)
-    with col1:
-        st_lottie(github_lottie,height=50,width=50, key="github", speed=2.5)
-    with col2:
-        st_lottie(docker_lottie,height=70,width=70, key="docker", speed=2.5)
-    with col3:
-        st_lottie(figma_lottie,height=50,width=50, key="figma", speed=2.5)
-    with col4:
-        st_lottie(js_lottie,height=50,width=50, key="js", speed=1)
-    
-    
+with open("images/resume-huz.pdf","rb") as f:
+      base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+      pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="1000mm" height="1000mm" type="application/pdf"></iframe>'
+      st.markdown(pdf_display, unsafe_allow_html=True)
+
 # ----------------- timeline ----------------- #
-with st.container():
-    st.markdown("""""")
-    st.subheader('📌 Career Snapshot')
+from sections.header import show_header
+from sections.about import show_about
+from sections.skills import show_skills
+from sections.projects import show_projects
+from sections.education import show_education
+from sections.contact import show_contact
+from sections.github_activity import show_github_activity
 
-    # load data
-    with open('example.json', "r") as f:
-        data = f.read()
-
-    # render timeline
-    timeline(data, height=400)
-
-# -----------------  tableau  -----------------  #
-with st.container():
-    st.markdown("""""")
-    st.subheader("📊 Tableau")
-    col1,col2 = st.columns([0.95, 0.05])
-    with col1:
-        with st.expander('See the work'):
-            components.html(
-                """
-                <!DOCTYPE html>
-                <html>  
-                    <title>Basic HTML</title>  
-                    <body style="width:130%">  
-                        <div class='tableauPlaceholder' id='viz1684205791200' style='position: static'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Su&#47;SunnybrookTeam&#47;Overview&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='SunnybrookTeam&#47;Overview' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Su&#47;SunnybrookTeam&#47;Overview&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1684205791200');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='1350px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='1550px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='1350px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='1550px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.minHeight='5750px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-                    </body>  
-                </HTML>
-                """
-            , height=400, scrolling=True
-            )
-    st.markdown(""" <a href={}> <em>🔗 access to the link </a>""".format(info['Tableau']), unsafe_allow_html=True)
+show_header()
     
-# ----------------- medium ----------------- #
-with st.container():
-    st.markdown("""""")
-    st.subheader('✍️ Medium')
-    col1,col2 = st.columns([0.95, 0.05])
-    with col1:
-        with st.expander('Display my latest posts'):
-            components.html(embed_rss['rss'],height=400)
-            
-        st.markdown(""" <a href={}> <em>🔗 access to the link </a>""".format(info['Medium']), unsafe_allow_html=True)
+# About Me Section
+show_about()
+
+# Skills Section
+show_skills()
+
+# Projects Section (Featured)
+show_projects()
+
+# Education & Certifications
+show_education()
+
+# GitHub Activity
+show_github_activity()
+
+# Contact Form
+show_contact()
 
 # -----------------  endorsement  ----------------- #
 with st.container():
