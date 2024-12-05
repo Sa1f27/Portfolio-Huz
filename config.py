@@ -10,10 +10,8 @@ info = {
    "Pronoun": "Him", 
    "Name": "Huzaifah",
    "Full_Name": "Md Huzaifah",
-   "Intro": "A Tech Educator and AI Enthusiast at cognitiveclass.ai",
+   "Intro": "An AI and ML Enthusiast",
    "About":"Hey there, I'm Vicky! I'm passionate about leveraging data and technology to drive meaningful insights and solutions in business. Check out my free courses and projects on cognitiveclass.ai: https://cognitiveclass.ai/",
-   "Tableau":"https://public.tableau.com/app/profile/vickytc/viz/SunnybrookTeam/Overview",
-   "Medium":"https://medium.com/@vicky-note/about",
    "LinkedIn":"https://www.linkedin.com/in/huzaifah-27o3/",
    "City":"Hyderabad, India",
    "Photo": """<a href="https://www.linkedin.com/in/huzaifah-27o3/"><img src="images\huz-bat.png" width="200" alt="Profile" title="Profile"></a>""",
@@ -55,7 +53,6 @@ PROJECTS = [
         "description": "Machine learning model to predict disease using modular code.",
         "tech_stack": ["Python", "Scikit-learn", "Cassandra"],
         "github_link": "https://github.com/Sa1f27/Disease-Prediction.git",
-        # "demo_link": "https://yourdemo.com/thyroid-prediction",
         "image": "images\health.png"
     }
 ]
