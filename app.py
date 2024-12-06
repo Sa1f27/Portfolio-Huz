@@ -8,6 +8,7 @@ from PIL import Image
 from groq import Groq
 from config import SOCIAL_LINKS, endorsements
 import uuid
+import base64
 
 # Configure Streamlit page
 st.set_page_config(page_title="Huzaifah's Portfolio", layout="wide", page_icon='🤖')
@@ -111,10 +112,15 @@ def local_css(file_name):
         
 local_css("style/style.css")
 
-with open("images/resume-huz.pdf","rb") as f:
-      base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-      pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="1000mm" height="1000mm" type="application/pdf"></iframe>'
-      st.markdown(pdf_display, unsafe_allow_html=True)
+with open("images/resume-huz.pdf", "rb") as f:
+    base64_pdf = base64.b64encode(f.read()).decode("utf-8")
+
+# Check if base64 encoding works by printing the output
+st.write(base64_pdf[:200])  # Print the first 200 characters of the base64 string
+
+# Attempt to render the iframe
+pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600px" type="application/pdf"></iframe>'
+st.markdown(pdf_display, unsafe_allow_html=True)
 
 # ----------------- timeline ----------------- #
 
