@@ -9,7 +9,10 @@ from groq import Groq
 from config import SOCIAL_LINKS, endorsements
 import uuid
 import base64
+<<<<<<< HEAD
 from streamlit.components.v1 import html
+=======
+>>>>>>> ff9100cbc2d2096e7f8374d27eaf826ce10e9e2c
 
 # Configure Streamlit page
 st.set_page_config(page_title="Huzaifah's Portfolio", layout="wide", page_icon='🤖')
