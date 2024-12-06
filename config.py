@@ -50,14 +50,14 @@ PROJECTS = [
         "tech_stack": ["Python", "AWS", "Streamlit"],
         "github_link": "https://github.com/Sa1f27/KidsCare-Pro.git",
         # "demo_link": "https://yourdemo.com/kidscare-pro",
-        "image": "images\kids.png"
+        "image": r"images\kids.png"
     },
     {
         "title": "Disease Prediction",
         "description": "Machine learning model to predict disease using modular code.",
         "tech_stack": ["Python", "Scikit-learn", "Cassandra"],
         "github_link": "https://github.com/Sa1f27/Disease-Prediction.git",
-        "image": "images\health.png"
+        "image": r"images\health.png"
     }
 ]
 

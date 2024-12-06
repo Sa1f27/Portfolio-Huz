@@ -155,19 +155,31 @@ class PortfolioApp:
         return icon_mapping.get(skill_name, icon_mapping['default'])
 
     def show_project_card(self, project):
+        # Display project title
+        st.markdown(f"<h3>{project['title']}</h3>", unsafe_allow_html=True)
+
+        # Display project image using st.image
+        if project.get('image'):
+            st.image(project['image'], use_container_width=True)
+
+        # Display project description
+        st.markdown(f"<p>{project['description']}</p>", unsafe_allow_html=True)
+
+        # Display tech stack
         st.markdown(f"""
-            <div class="project-card">
-                <h3 class="project-title">{project['title']}</h3>
-                <p>{project['description']}</p>
-                <div class="tech-stack">
-                    {''.join([f'<span class="skill-badge"><i class="{self.get_icon_for_skill(tech)} skill-icon"></i>{tech}</span>' for tech in project['tech_stack']])}
-                </div>
-                <div class="project-links">
-                    {'<a href="' + project.get('github_link', '#') + '" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>' if project.get('github_link') else ''}
-                    {'<a href="' + project.get('live_link', '#') + '" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>' if project.get('live_link') else ''}
-                </div>
+            <div class="tech-stack">
+                {''.join([f'<span class="skill-badge"><i class="{self.get_icon_for_skill(tech)} skill-icon"></i>{tech}</span>' for tech in project['tech_stack']])}
             </div>
         """, unsafe_allow_html=True)
+
+        # Display project links (if any)
+        st.markdown(f"""
+            <div class="project-links">
+                {'<a href="' + project.get('github_link', '#') + '" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>' if project.get('github_link') else ''}
+            </div>
+        """, unsafe_allow_html=True)
+
+
 
     def show_skills_section(self, title, skills):
         st.markdown(f'<h3 class="section-header">{title}</h3>', unsafe_allow_html=True)
@@ -202,6 +214,8 @@ class PortfolioApp:
             st.header("Featured Projects")
             for project in PROJECTS:
                 self.show_project_card(project)
+                st.markdown("---")
+                st.markdown('<div class="skills-grid">', unsafe_allow_html=True)
         
         with col2:
             st.header("Skills & Expertise")
