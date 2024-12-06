@@ -33,11 +33,6 @@ st.markdown(
 #============projects================
 def show_project_card(project):
     with st.container():
-        try:
-            st.image(project["image"], use_container_width=True)
-        except Exception as e:
-            st.error(f"Failed to load image from project['image']: {e}")
-        
         # Static fallback for testing
         try:
             st.image("images/kids.png", use_container_width=True)
