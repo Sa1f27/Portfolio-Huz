@@ -4,7 +4,6 @@ from config import PROJECTS, SKILLS
 class PortfolioApp:
     def __init__(self):
         self.apply_custom_styles()
-    
     def apply_custom_styles(self):
         st.markdown("""
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
