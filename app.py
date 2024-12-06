@@ -221,7 +221,7 @@ def Home_Page():
             st.markdown(
                 '''
                 <div style="display: flex; gap: 15px; font-size: 16px; align-items: center;">
-                    <a href="https://github.com/Sa1f27" target="_blank" style="text-decoration: none;">👾 GitHub</a>
+                    <a href="https://github.com/Sa1f27" target="_blank" style="text-decoration: none;">👾 GitHub &nbsp; &nbsp; &nbsp;|</a>
                     <a href="https://www.linkedin.com/in/huzaifah-27o3/" target="_blank" style="text-decoration: none;">🇮🇳 LinkedIn</a>
                 </div>
                 ''',
@@ -233,16 +233,14 @@ def Home_Page():
     st.markdown("---")
 
     with st.container():
-        col5, col6 = st.columns([6, 3])
+        col5, col6 = st.columns([7, 3])
         with col5:
-            st.markdown('<div class="card">', unsafe_allow_html=True)
             user_input = st.text_input("Ask any question about my portfolio!", key="input")
             if user_input:
                 response = ask_groq(user_input)
                 st.markdown(f'<div class="response">{response}</div>', unsafe_allow_html=True)
             else:
                 st.write("Hi, I'm Mohammed Huzaifah. I'm a passionate Machine Learning Engineer with a strong foundation in AI, Data Science and MLOps. Currently, I'm pursuing my degree in Computer Science with specialization in AI/ML. With experience in hackathons, innovative project implementations, and contributing to open-source projects, I'm confident in my ability to design, develop, and deploy scalable AI solutions. I'm immediately available for internship or project opportunities.")
-            st.markdown('</div>', unsafe_allow_html=True)
         with col6:
             st_lottie(lottie_gif, height=280, key=str(uuid.uuid4()))
     st.markdown("---")
