@@ -4,3 +4,4 @@ streamlit_lottie==0.0.5
 streamlit_timeline==0.0.2
 nltk==3.9.1
 groq
+streamlit-option-menu
