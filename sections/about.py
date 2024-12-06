@@ -53,8 +53,6 @@ def show_education():
         with cols[1]:
             if EDUCATION.get("logo"):
                 st.image(EDUCATION["logo"], width=100)
-    
-    st.markdown("---")
 
 if __name__ == "__main__":
     show_about()

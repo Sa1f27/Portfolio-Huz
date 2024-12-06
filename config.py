@@ -1,10 +1,3 @@
-# # Page Configuration
-# PAGE_CONFIG = {
-#     "page_title": "Huzaifah's Portfolio",
-#     "page_icon": "🚀",
-#     "layout": "wide",
-#     "initial_sidebar_state": "expanded"
-# }
 
 info = {
    "Pronoun": "Him", 
@@ -95,9 +88,8 @@ SKILLS = {
 
 # Social Media Links
 SOCIAL_LINKS = {
-    "GitHub": "https://github.com/your-github-username",
-    "LinkedIn": "https://linkedin.com/in/your-linkedin-username",
-    "Twitter": "https://twitter.com/your-twitter-handle"
+    "GitHub": "https://github.com/Sa1f27",
+    "LinkedIn": "https://www.linkedin.com/in/huzaifah-27o3/"
 }
 
 # About Section
