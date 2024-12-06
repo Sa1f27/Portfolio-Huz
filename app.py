@@ -291,9 +291,6 @@ def gitleet():
             <a href="https://github.com/Sa1f27" target="_blank">
                 <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sa1f27&theme=react&hide_border=false" alt="GitHub Streak Stats" />
             </a>
-            <a href="https://github.com/Sa1f27" target="_blank">
-                <img src="https://github-contributions.vercel.app/api/v1/contributions?username=Sa1f27" alt="GitHub Contribution Graph" />
-            </a>
         </div>
     </div>
     """, unsafe_allow_html=True)
