@@ -33,7 +33,18 @@ st.markdown(
 #============projects================
 def show_project_card(project):
     with st.container():
-        st.image("images\kids.png", use_container_width=True)
+        try:
+            st.image(project["image"], use_container_width=True)
+        except Exception as e:
+            st.error(f"Failed to load image from project['image']: {e}")
+        
+        # Static fallback for testing
+        try:
+            st.image("images/kids.png", use_container_width=True)
+        except Exception as e:
+            st.error(f"Failed to load static image: {e}")
+
+
         
         st.markdown(f"<h3 class='project-title'>{project['title']}</h3>", unsafe_allow_html=True)
         st.write(project["description"])
