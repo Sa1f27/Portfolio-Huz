@@ -1,137 +1,178 @@
 import streamlit as st
-from config import PROJECTS
-from config import SKILLS
+from config import PROJECTS, SKILLS
 
-# Custom CSS for badges and styling
-st.markdown(
-    """
-    <style>
-    .badge {
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 5px 3px;
-        background-color: #f0f0f0;
-        color: #333;
-        border-radius: 5px;
-        font-size: 14px;
+class PortfolioApp:
+    def __init__(self):
+        self.apply_custom_styles()
+    
+    def apply_custom_styles(self):
+        st.markdown("""
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    /* Skill Badge */
+    .skill-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        margin: 0.3rem;
+        background: linear-gradient(135deg, #cfd8dc 0%, #b0bec5 100%); /* Blue-gray gradient */
+        border-radius: 8px;
+        border: 1px solid #90a4ae; /* Lighter blue-gray border */
+        transition: transform 0.2s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        color: #263238; /* Dark text for contrast */
     }
+    .skill-badge:hover {
+        transform: translateY(-2px);
+    }
+    .skill-icon {
+        margin-right: 0.5rem;
+        color: #607d8b; /* Darker blue-gray for the icons */
+    }
+
+    /* Project Card */
     .project-card {
-        padding: 15px;
+        background: #263238; /* Light blue-gray background */
         border-radius: 10px;
-        background: #f9f9f9;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border: 1px solid #90a4ae;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+        color: #263238; /* Dark text for readability */
     }
+    .project-card:hover {
+        transform: translateY(-3px);
+    }
+
+    /* Project Title */
     .project-title {
-        color: #333;
-        font-size: 24px;
-        font-weight: bold;
+        color: #eceff1; /* Dark blue-gray for the title */
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
     }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-#============projects================
-def show_project_card(project):
-    with st.container():
-        # Static fallback for testing
-        try:
-            st.image("images/kids.png", use_container_width=True)
-        except Exception as e:
-            st.error(f"Failed to load static image: {e}")
 
+    /* Tech Stack */
+    .tech-stack {
+        margin: 1rem 0;
+        color: #607d8b; /* Soft blue-gray text for tech stack */
+    }
 
-        
-        st.markdown(f"<h3 class='project-title'>{project['title']}</h3>", unsafe_allow_html=True)
-        st.write(project["description"])
+    /* Section Header */
+    .section-header {
+        border-bottom: 2px solid #607d8b; /* Darker blue-gray border */
+        padding-bottom: 0.5rem;
+        margin-bottom: 2rem;
+        color: #263238; /* Dark text for section header */
+    }
 
-        # Tech Stack Badges
-        tech_stack_html = " ".join(f"<span class='badge'>{tech}</span>" for tech in project["tech_stack"])
-        st.markdown(tech_stack_html, unsafe_allow_html=True)
+    /* Soft Skill Item */
+    .soft-skill-item {
+        background: #f5f5f5; /* Light gray for a soft contrast */
+        padding: 0.75rem;
+        border-radius: 6px;
+        margin: 0.5rem 0;
+        border-left: 4px solid #607d8b; /* Blue-gray left border */
+        color: #263238; /* Dark text for contrast */
+    }
+</style>
 
-        # Project Links
-        col1, col2 = st.columns(2)
-        with col1:
-            if "github_link" in project:
-                st.markdown(
-                    f"[![GitHub](https://img.shields.io/badge/-GitHub-black?style=flat-square&logo=github&logoColor=white)]({project['github_link']})",
-                    unsafe_allow_html=True,
-                )
-        with col2:
-            if "live_link" in project:
-                st.markdown(
-                    f"[![Live Demo](https://img.shields.io/badge/-Live%20Demo-green?style=flat-square&logo=heroku&logoColor=white)]({project['live_link']})",
-                    unsafe_allow_html=True,
-                )
+        """, unsafe_allow_html=True)
 
-def show_projects():
-    st.header("🚀 Featured Projects")
-    st.write("Explore some of my notable projects that demonstrate my skills and expertise.")
-    
-    for project in PROJECTS:
-        with st.container():
-            st.markdown("<div class='project-card'>", unsafe_allow_html=True)
-            show_project_card(project)
-            st.markdown("</div>", unsafe_allow_html=True)
-            st.markdown("---")  # Separator between projects
+    def get_icon_for_skill(self, skill_name):
+        # Map skills to Font Awesome icons
+        icon_mapping = {
+            'Python': 'fab fa-python',
+            'JavaScript': 'fab fa-js',
+            'Java': 'fab fa-java',
+            'React': 'fab fa-react',
+            'AWS': 'fab fa-aws',
+            'Docker': 'fab fa-docker',
+            'Git': 'fab fa-git-alt',
+            'HTML': 'fab fa-html5',
+            'CSS': 'fab fa-css3',
+            'Node.js': 'fab fa-node',
+            # Add default icon for unknown skills
+            'default': 'fas fa-code'
+        }
+        return icon_mapping.get(skill_name, icon_mapping['default'])
 
-#===========skills============
-#section/skills.py
-import streamlit as st
-from config import SKILLS
-
-def create_skill_progress(skill, proficiency):
-    """Display a skill with a progress bar for proficiency."""
-    st.markdown(f"**{skill}**")
-    st.progress(proficiency)
-
-def show_skills():
-    st.header("⚡ Skills & Expertise")
-    
-    # 1. Programming Languages
-    st.subheader("Programming Languages")
-    cols = st.columns(2)
-    for idx, lang in enumerate(SKILLS["programming_languages"]):
-        with cols[idx % 2]:
-            create_skill_progress(lang, 85 - (idx * 5))
-    
-    # 2. Technologies & Frameworks
-    st.subheader("Technologies & Frameworks")
-    tech_categories = [
-        ("Machine Learning Frameworks", "machine_learning_frameworks"),
-        ("Cloud Technologies", "cloud_technologies"),
-        ("Data Management", "data_management"),
-        ("Data Visualization", "data_visualization")
-    ]
-    
-    for category_name, key in tech_categories:
-        st.markdown(f"### {category_name}")
-        cols = st.columns(2)
-        for idx, tech in enumerate(SKILLS.get(key, [])):
-            with cols[idx % 2]:
-                create_skill_progress(tech, 80 - (idx * 5))
-    
-    # 3. Tools & Platforms
-    st.subheader("Tools & Platforms")
-    cols = st.columns(3)
-    for idx, tool in enumerate(SKILLS["tools"]):
-        with cols[idx % 3]:
-            st.markdown(
-                f"""
-                <div style="display: flex; align-items: center;">
-                    <img src="images/{tool.lower().replace(' ', '_')}.png" alt="{tool}" width="30" style="margin-right: 10px;"/>
-                    <span>{tool}</span>
+    def show_project_card(self, project):
+        st.markdown(f"""
+            <div class="project-card">
+                <h3 class="project-title">{project['title']}</h3>
+                <p>{project['description']}</p>
+                <div class="tech-stack">
+                    {''.join([f'<span class="skill-badge"><i class="{self.get_icon_for_skill(tech)} skill-icon"></i>{tech}</span>' for tech in project['tech_stack']])}
                 </div>
-                """,
-                unsafe_allow_html=True
-            )
+                <div style="display: flex; gap: 1rem;">
+                    {'<a href="' + project.get('github_link', '#') + '" target="_blank"><i class="fab fa-github"></i> GitHub</a>' if project.get('github_link') else ''}
+                    {'<a href="' + project.get('live_link', '#') + '" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>' if project.get('live_link') else ''}
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
 
-    # 4. Soft Skills
-    st.subheader("Soft Skills")
-    for skill in SKILLS["soft_skills"]:
-        st.markdown(f"- {skill}")
-    st.markdown("---")
+    def show_skills_section(self, title, skills, columns=2):
+        st.markdown(f'<h3 class="section-header">{title}</h3>', unsafe_allow_html=True)
+        cols = st.columns(columns)
+        for idx, skill in enumerate(skills):
+            with cols[idx % columns]:
+                st.markdown(f"""
+                    <div class="skill-badge">
+                        <i class="{self.get_icon_for_skill(skill)} skill-icon"></i>
+                        {skill}
+                    </div>
+                """, unsafe_allow_html=True)
+
+    def show_soft_skills(self):
+        st.markdown('<h3 class="section-header">Soft Skills</h3>', unsafe_allow_html=True)
+        for skill in SKILLS['soft_skills']:
+            st.markdown(f"""
+                <div class="soft-skill-item">
+                    <i class="fas fa-check-circle" style="color: #0366d6; margin-right: 0.5rem;"></i>
+                    {skill}
+                </div>
+            """, unsafe_allow_html=True)
+
+    def run(self):
+        col1, col2 = st.columns([4, 2])
+
+        # In the first column, display Featured Projects
+        with col1:
+            st.header("Featured Projects")
+            for project in PROJECTS:
+                self.show_project_card(project)
+        
+        # In the second column, create two rows for Skills & Expertise and Tools & Platforms
+        with col2:
+            # First row: Skills & Expertise
+            st.header("Skills & Expertise")
+            col3, col4 = st.columns([1, 1])
+            with col3:
+                # Programming Languages
+                self.show_skills_section("Programming Languages", SKILLS['programming_languages'])
+                
+                # Technologies & Frameworks
+                tech_sections = {
+                    "Machine Learning": SKILLS.get('machine_learning_frameworks', []),
+                    "Cloud Technologies": SKILLS.get('cloud_technologies', []),
+                    "Data Management": SKILLS.get('data_management', []),
+                    "Data Visualization": SKILLS.get('data_visualization', [])
+                }
+                for title, skills in tech_sections.items():
+                    if skills:  # Only show sections with skills
+                        self.show_skills_section(title, skills)
+            
+            with col4:
+                # Tools & Platforms
+                self.show_skills_section("Tools & Platforms", SKILLS['tools'], columns=3)
+                
+                # Soft Skills
+                self.show_soft_skills()
+
 
 if __name__ == "__main__":
-    show_projects()
-    show_skills()
-    
+    portfolio = PortfolioApp()
+    portfolio.run()

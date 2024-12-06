@@ -11,18 +11,29 @@ info = {
    "Name": "Huzaifah",
    "Full_Name": "Md Huzaifah",
    "Intro": "An AI and ML Enthusiast",
-   "About":"Hey there, I'm Vicky! I'm passionate about leveraging data and technology to drive meaningful insights and solutions in business. Check out my free courses and projects on cognitiveclass.ai: https://cognitiveclass.ai/",
    "LinkedIn":"https://www.linkedin.com/in/huzaifah-27o3/",
    "City":"Hyderabad, India",
    "Photo": """<a href="https://www.linkedin.com/in/huzaifah-27o3/"><img src="images\huz-bat.png" width="200" alt="Profile" title="Profile"></a>""",
    "Email": "huzaif027@gmail.com"
 }
 
-endorsements = {
-    "img1": "https://user-images.githubusercontent.com/90204593/238169843-12872392-f2f1-40a6-a353-c06a2fa602c5.png",
-    "img2": "https://user-images.githubusercontent.com/90204593/238171251-5f4c5597-84d4-4b4b-803c-afe74e739070.png",
-    "img3": "https://user-images.githubusercontent.com/90204593/238171242-53f7ceb3-1a71-4726-a7f5-67721419fef8.png"
-}
+endorsements = [
+            {
+                "title": "Outstanding Developer",
+                "content": "Recognized for exceptional problem-solving skills and innovative solutions.",
+                "gradient": "linear-gradient(to right, #4CAF50, #81C784)"
+            },
+            {
+                "title": "Team Player",
+                "content": "Praised for seamless collaboration and communication within diverse teams.",
+                "gradient": "linear-gradient(to right, #2196F3, #64B5F6)"
+            },
+            {
+                "title": "AI Enthusiast",
+                "content": "Contributed to groundbreaking projects in machine learning and AI.",
+                "gradient": "linear-gradient(to right, #FF5722, #FF8A65)"
+            }
+        ]
 
 # Personal Information
 PERSONAL_INFO = {

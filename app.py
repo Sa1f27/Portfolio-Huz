@@ -8,13 +8,15 @@ from PIL import Image
 from groq import Groq
 from config import SOCIAL_LINKS, endorsements
 import uuid
+import base64
+from streamlit.components.v1 import html
 
 # Configure Streamlit page
 st.set_page_config(page_title="Huzaifah's Portfolio", layout="wide", page_icon='🤖')
 
 #-----------------Groq Configuration------------------#
 
-GROQ_API_KEY = st.secrets["groq_api_key"]  # Replace with your Groq API key
+GROQ_API_KEY = st.secrets["api_keys"]["groq_api_key"]  # Replace with your Groq API key
 client = Groq(api_key=GROQ_API_KEY)
 
 # Load bio data (if you still want to use bio.txt or another source)
@@ -69,7 +71,6 @@ full_name = info['Full_Name']
 with col1:
     gradient('#FFD4DD','#000395','e0fbfc',f"Hi, I'm {full_name}👋", info["Intro"])
     st.write("")
-    st.write(info['About'])
     # Social Links
     social_cols = st.columns(len(SOCIAL_LINKS))
     for idx, (platform, link) in enumerate(SOCIAL_LINKS.items()):
@@ -111,15 +112,21 @@ def local_css(file_name):
         
 local_css("style/style.css")
 
-with open("images/resume-huz.pdf","rb") as f:
-      base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-      pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="1000mm" height="1000mm" type="application/pdf"></iframe>'
-      st.markdown(pdf_display, unsafe_allow_html=True)
+#========resume========#
+def resume():
+    st.header("Professional Resume")
+    # Replace this with your actual Google Drive file ID
+    file_id = "1EvyvcJoLZDoNe81qnk8KXDkkB3Xu6WHJ"
+    # Construct the embeddable URL
+    pdf_url = f"https://drive.google.com/file/d/{file_id}/preview"
+    # Embed the PDF in an iframe
+    pdf_display = f'<iframe src="{pdf_url}" width="100%" height="600px" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
 
 # ----------------- timeline ----------------- #
 
 from sections.about import show_about, show_education
-from sections.projects import show_skills, show_projects
+from sections.projects import PortfolioApp
 from sections.contact import show_contact, render_coworker_endorsements
 
 
@@ -135,14 +142,12 @@ with col2:
 
 col3, col4 = st.columns([2, 2])
 
-# In the first column, display About Me
 with col3:
-    # Skills Section
-    show_skills()
+    # In the first column, display About Me
+    portfolio = PortfolioApp()
+    portfolio.run()
 with col4:
-    # Projects Section (Featured)
-    show_projects()
-
+    resume()
 
 col5, col6 = st.columns([4, 2])
 
