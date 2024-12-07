@@ -1,4 +1,4 @@
-```markdown
+
 # 🤖 Huzaifah's Portfolio with Streamlit
 
 Showcase your skills, projects, and achievements in an interactive and modern way using **Streamlit**. This portfolio app includes features like an AI-powered chatbot, animations, a career timeline, and more.
