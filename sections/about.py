@@ -23,13 +23,13 @@ def show_about():
     st.subheader("Quick Facts")
     stat_cols = st.columns(4)
     with stat_cols[0]:
-        st.metric("Years of Experience", "3+")
+        st.metric("Years of Experience", "1+")
     with stat_cols[1]:
         st.metric("Projects Completed", "20+")
     with stat_cols[2]:
-        st.metric("GitHub Repos", "30+")
+        st.metric("GitHub Repos", "21+")
     with stat_cols[3]:
-        st.metric("Happy Clients", "15+")
+        st.metric("Happy Clients", "4+")
 st.markdown("---")
 
 #==========EDUCATION=============
