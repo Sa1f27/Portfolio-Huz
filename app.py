@@ -341,17 +341,17 @@ def Home_Page():
 
     st.markdown("---")
 
-    with st.container():
-        col5, col6 = st.columns([7, 3])
-        with col5:
-            user_input = st.text_input("Ask any question about my portfolio!", key="input")
-            if user_input:
-                response = ask_groq(user_input)
-                st.markdown(f'<div class="response">{response}</div>', unsafe_allow_html=True)
-            else:
-                st.write("Hi, I'm Mohammed Huzaifah. I'm a passionate Machine Learning Engineer with a strong foundation in AI, Data Science and MLOps. Currently, I'm pursuing my degree in Computer Science with specialization in AI/ML. With experience in hackathons, innovative project implementations, and contributing to open-source projects, I'm confident in my ability to design, develop, and deploy scalable AI solutions. I'm immediately available for internship or project opportunities.")
-        with col6:
-            st_lottie(lottie_gif, height=280, key=str(uuid.uuid4()))
+    
+    col5, col6 = st.columns([7, 3])
+    with col5:
+        user_input = st.text_input("Ask any question about my portfolio!", key="input")
+        if user_input:
+            response = ask_groq(user_input)
+            st.markdown(f'<div class="response">{response}</div>', unsafe_allow_html=True)
+        else:
+            st.write("Hi, I'm Mohammed Huzaifah. I'm a passionate Machine Learning Engineer with a strong foundation in AI, Data Science and MLOps. Currently, I'm pursuing my degree in Computer Science with specialization in AI/ML. With experience in hackathons, innovative project implementations, and contributing to open-source projects, I'm confident in my ability to design, develop, and deploy scalable AI solutions. I'm immediately available for internship or project opportunities.")
+    with col6:
+        st_lottie(lottie_gif, height=280, key=str(uuid.uuid4()))
     st.markdown("---")
     with st.container():
         col7, col8 = st.columns([6, 3])
