@@ -228,7 +228,7 @@ def Home_Page():
                 unsafe_allow_html=True
             )
         with col2:
-            st.image("images/huz-bat.png", use_container_width=True)
+            st.image("images/huz-image.png", use_container_width=True)
 
     st.markdown("---")
 
