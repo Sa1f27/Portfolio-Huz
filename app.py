@@ -170,6 +170,7 @@ def resume():
 # ------------------- SKILLS AND PROJECTS ------------------- #
 
 def skills():
+    st.markdown("# 🚀 My Technical Journey")
     portfolio = PortfolioApp()
     portfolio.run()
     gitleet()

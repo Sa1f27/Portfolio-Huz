@@ -56,7 +56,24 @@ class PortfolioApp:
             </div>
         """, unsafe_allow_html=True)
 
-
+    def get_icon_for_skill(self, skill_name):
+        icon_mapping = {
+            'Python': 'fab fa-python',
+            'JavaScript': 'fab fa-js',
+            'Java': 'fab fa-java',
+            'React': 'fab fa-react',
+            'AWS': 'fab fa-aws',
+            'Docker': 'fab fa-docker',
+            'Git': 'fab fa-git-alt',
+            'HTML': 'fab fa-html5',
+            'CSS': 'fab fa-css3',
+            'Node.js': 'fab fa-node',
+            'Machine Learning': 'fas fa-brain',
+            'Deep Learning': 'fas fa-network-wired',
+            'Data Science': 'fas fa-chart-line',
+            'default': 'fas fa-code'
+        }
+        return icon_mapping.get(skill_name, icon_mapping['default'])
 
     def show_skills_section(self, title, skills):
         st.markdown(f'<h3 class="section-header">{title}</h3>', unsafe_allow_html=True)
@@ -64,21 +81,11 @@ class PortfolioApp:
         for skill in skills:
             st.markdown(f"""
                 <div class="skill-badge">
-                    <i class="{self.get_icon_for_skill(skill)} skill-icon"></i>
+                    <i class="{self.get_icon_for_skill(skill)} skill-icon" style="margin-right: 8px;"></i>
                     {skill}
                 </div>
             """, unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
-
-    def show_soft_skills(self):
-        st.markdown('<h3 class="section-header">Soft Skills</h3>', unsafe_allow_html=True)
-        for skill in SKILLS['soft_skills']:
-            st.markdown(f"""
-                <div class="soft-skill-item">
-                    <i class="fas fa-star" style="color: #60a5fa; margin-right: 0.5rem;"></i>
-                    {skill}
-                </div>
-            """, unsafe_allow_html=True)
 
     def run(self):
         # Main container with padding
@@ -104,7 +111,6 @@ class PortfolioApp:
             "Data Management": SKILLS.get('data_management', []),
             "Data Visualization": SKILLS.get('data_visualization', []),
             "Tools & Platforms": SKILLS.get('tools', []),
-            "Soft Skills": SKILLS.get('soft_skills', [])
         }
 
         skill_cols = st.columns(len(skill_categories))  # Create a column for each skill category
@@ -116,7 +122,6 @@ class PortfolioApp:
 
         # Closing the container
         st.markdown('</div>', unsafe_allow_html=True)
-
 
 if __name__ == "__main__":
     portfolio = PortfolioApp()

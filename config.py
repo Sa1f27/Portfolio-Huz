@@ -128,9 +128,6 @@ html_code = """
 """
 #--------------------Leetcode/Github----------------------#
 def gitleet():
-    # Main Title
-    st.markdown("# 🚀 My Technical Journey")
-
     # Section 1: LeetCode Achievements
     st.header("💻 LeetCode Achievements")
     st.markdown("""
@@ -170,8 +167,6 @@ def gitleet():
         <img src="https://ghchart.rshah.org/Sa1f27" alt="GitHub Contribution Chart" style="width: 1000px; height: 170px; object-position: right;" />
     </a>
     """, unsafe_allow_html=True)
-
-
 
 
 # Theme and Style Settings
