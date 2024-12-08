@@ -1,5 +1,18 @@
 /* Modern Portfolio Theme */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Remove Lottie Animation Borders */
+[data-testid="stLottie"] {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important; 
+  background: transparent !important;/* Added to remove any potential box-shadow */
+}
+
+/* Optional: Ensure there are no padding/margin issues for the Lottie container */
+[data-testid="stLottie"] > div {
+  padding: 0 !important;
+  margin: 0 !important;
+}
 
 /* Reset and Base Styles */
 * {
@@ -51,12 +64,6 @@ p {
     font-size: 1rem;
 }
 
-/* Remove Lottie Animation Borders */
-[data-testid="stLottie"] {
-    border: none !important;
-    background: transparent !important;
-}
-
 /* Endorsement Cards with Special Gradient */
 .endorsement-card {
     background: linear-gradient(135deg, rgba(0, 255, 223, 0.1) 0%, rgba(6, 61, 117, 0.3) 100%) !important;
@@ -69,11 +76,13 @@ p {
 }
 
 .endorsement-card:hover {
+  background: transparent !important;
     transform: translateY(-5px);
 }
 
 /* Project Cards */
 .project-card {
+  background: transparent !important;
     background-color: #262730;
     border-radius: 12px;
     padding: 1.5rem;

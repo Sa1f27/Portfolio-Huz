@@ -25,13 +25,17 @@ with open("bio.txt", "r") as file:
 
 # ------------------- FUNCTIONS ------------------- #
 
-# Load Lottie animation from URL
 def load_lottie_url(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
+    try:
+        r = requests.get(url)
+        if r.status_code != 200:
+            raise Exception(f"Failed to load Lottie animation, status code {r.status_code}")
+        return r.json()
+    except Exception as e:
+        st.error(f"Error loading Lottie animation: {e}")
         return None
-    return r.json()
 
+lottie_gif = load_lottie_url("https://assets9.lottiefiles.com/packages/lf20_x17ybolp.json")
 # Load custom CSS
 def local_css(file_name):
     with open(file_name, "r") as f:  # Explicitly use "r" mode for readability
@@ -111,11 +115,11 @@ def gradient1(color1, color2, color3, content1, content2):
                 unsafe_allow_html=True)
     
 def Home_Page():
-    lottie_gif = load_lottie_url("https://assets9.lottiefiles.com/packages/lf20_x17ybolp.json")
+    
     full_name = info['Full_Name']
     
     with st.container():
-        col1, col2 = st.columns([8, 3])
+        col1, col2 = st.columns([4, 1])
         with col1:
             gradient1('#FFD4DD','#000395','#e0fbfc', f"Hi, I'm {full_name}👋", info["Intro"])
   
@@ -131,7 +135,8 @@ def Home_Page():
                 unsafe_allow_html=True
             )
         with col2:
-            st.image("images/huz-ima.png", use_container_width=True)
+            st.image("images/huz-ima.png", width=180)
+
 
     st.markdown("---")
 
@@ -145,8 +150,10 @@ def Home_Page():
         else:
             st.write("Hi, I'm Mohammed Huzaifah. I'm a passionate Machine Learning Engineer with a strong foundation in AI, Data Science and MLOps. Currently, I'm pursuing my degree in Computer Science with specialization in AI/ML. With experience in hackathons, innovative project implementations, and contributing to open-source projects, I'm confident in my ability to design, develop, and deploy scalable AI solutions. I'm immediately available for internship or project opportunities.")
     with col6:
-        st_lottie(lottie_gif, height=280, key=str(uuid.uuid4()))
+        st_lottie(lottie_gif, height=280, key="data")
     st.markdown("---")
+
+    
     with st.container():
         col7, col8 = st.columns([6, 3])
         with col7:
