@@ -2,137 +2,15 @@ import streamlit as st
 from config import PROJECTS, SKILLS
 
 class PortfolioApp:
-    def __init__(self):
-        self.apply_custom_styles()
-    def apply_custom_styles(self):
-        st.markdown("""
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-            <style>
-                /* Global Styles */
-                .stApp {
-                    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-                    color: #e2e8f0;
-                }
-                
-                /* Skill Badge */
-                .skill-badge {
-                    display: inline-flex;
-                    align-items: center;
-                    padding: 0.5rem 1rem;
-                    margin: 0.3rem;
-                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-                    border-radius: 12px;
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    transition: all 0.3s ease;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                    backdrop-filter: blur(10px);
-                    color: #e2e8f0;
-                }
-                .skill-badge:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-                    border-color: rgba(255, 255, 255, 0.2);
-                }
-                .skill-icon {
-                    margin-right: 0.5rem;
-                    color: #60a5fa;
-                }
+    # Load custom CSS
+    def local_css(file_name):
+        with open(file_name, "r") as f:  # Explicitly use "r" mode for readability
+            css_content = f.read()
+            # Apply the CSS
+            st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
 
-                /* Project Card */
-                .project-card {
-                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-                    border-radius: 16px;
-                    padding: 2rem;
-                    margin: 1.5rem 0;
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-                    backdrop-filter: blur(10px);
-                    transition: all 0.3s ease;
-                }
-                .project-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
-                }
-
-                /* Project Title */
-                .project-title {
-                    color: #60a5fa;
-                    font-size: 1.75rem;
-                    font-weight: 700;
-                    margin-bottom: 1.5rem;
-                    letter-spacing: 0.5px;
-                }
-
-                /* Tech Stack */
-                .tech-stack {
-                    margin: 1.5rem 0;
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0.5rem;
-                }
-
-                /* Section Header */
-                .section-header {
-                    color: #60a5fa;
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    margin: 2rem 0 1rem 0;
-                    padding-bottom: 0.5rem;
-                    border-bottom: 2px solid rgba(96, 165, 250, 0.3);
-                }
-
-                /* Links */
-                .project-links {
-                    display: flex;
-                    gap: 1rem;
-                    margin-top: 1.5rem;
-                }
-                .project-link {
-                    display: inline-flex;
-                    align-items: center;
-                    padding: 0.5rem 1rem;
-                    background: rgba(96, 165, 250, 0.1);
-                    border-radius: 8px;
-                    color: #60a5fa;
-                    text-decoration: none;
-                    transition: all 0.3s ease;
-                }
-                .project-link:hover {
-                    background: rgba(96, 165, 250, 0.2);
-                    transform: translateY(-2px);
-                }
-                .project-link i {
-                    margin-right: 0.5rem;
-                }
-
-                /* Soft Skills */
-                .soft-skill-item {
-                    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%);
-                    padding: 1rem;
-                    border-radius: 12px;
-                    margin: 0.75rem 0;
-                    border-left: 4px solid #60a5fa;
-                    backdrop-filter: blur(10px);
-                }
-
-                /* Streamlit Overrides */
-                .stMarkdown {
-                    color: #e2e8f0;
-                }
-                .stHeader {
-                    color: #60a5fa !important;
-                    font-weight: 700;
-                }
-                
-                /* Skills Grid */
-                .skills-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                    gap: 1rem;
-                    margin: 1rem 0;
-                }
-            </style>
-        """, unsafe_allow_html=True)
+    # Call the function with the correct file path
+    local_css("style/style.css") 
 
     def get_icon_for_skill(self, skill_name):
         icon_mapping = {

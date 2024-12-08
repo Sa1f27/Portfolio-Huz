@@ -65,7 +65,7 @@ PROJECTS = [
 EDUCATION = {
     "university": "Your University Name",
     "degree": "Bachelor of Technology in Computer Science",
-    "duration": "2021 - 2026",
+    "duration": "2022 - 2026",
     "gpa": "8.7/10",
     "relevant_courses": [
         "Machine Learning",

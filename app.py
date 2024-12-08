@@ -34,8 +34,14 @@ def load_lottie_url(url: str):
 
 # Load custom CSS
 def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
+    with open(file_name, "r") as f:  # Explicitly use "r" mode for readability
+        css_content = f.read()
+        # Apply the CSS
+        st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
+
+# Call the function with the correct file path
+local_css("style/style.css")  # Use forward slashes for cross-platform compatibility
+
 
 # Fetch Groq AI Response
 def ask_groq(input_text):
@@ -68,235 +74,6 @@ with st.sidebar:
     )
 
 # ------------------- HOME PAGE ------------------- #
-
-# Custom Theme and Styling
-st.markdown("""
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Global Styles */
-        .stApp {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e2e8f0;
-        }
-        
-        /* Sidebar Styling */
-        .css-1d391kg {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        }
-        
-        /* Sidebar Title */
-        .css-1d391kg .streamlit-expanderHeader {
-            color: #e2e8f0 !important;
-            background-color: transparent !important;
-        }
-        
-        /* Sidebar Navigation */
-        .nav-link {
-            background: rgba(255, 255, 255, 0.05) !important;
-            color: #e2e8f0 !important;
-            border-radius: 8px !important;
-            margin: 0.25rem 0 !important;
-            transition: all 0.3s ease !important;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            background: rgba(96, 165, 250, 0.2) !important;
-            color: #60a5fa !important;
-            transform: translateX(5px);
-        }
-        
-        /* Sidebar Container */
-        section[data-testid="stSidebar"] {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Sidebar Menu Container */
-        .stMenu {
-            background: transparent !important;
-        }
-        
-        /* Menu Items */
-        .menu-item {
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-        
-        /* Main Container */
-        .main-container {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-        }
-        
-        /* Headers */
-        h1, h2, h3 {
-            color: #60a5fa !important;
-            font-weight: 700;
-        }
-        
-        /* Option Menu Container */
-        #MainMenu {
-            color: #e2e8f0 !important;
-            background: transparent !important;
-        }
-        
-        /* Hamburger Menu */
-        .st-emotion-cache-1rf1fqk {
-            color: #e2e8f0 !important;
-        }
-        
-        /* Rest of your existing styles... */
-        
-        /* Cards */
-        .card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            margin: 1rem 0;
-            transition: transform 0.3s ease;
-        }
-        
-        /* Additional Sidebar Elements */
-        .streamlit-expanderHeader, .streamlit-expanderContent {
-            background-color: transparent !important;
-            color: #e2e8f0 !important;
-        }
-        
-        [data-testid="stSidebarNav"] {
-            background: transparent !important;
-        }
-        
-        .st-emotion-cache-16txtl3, .st-emotion-cache-16txtl3:hover {
-            color: #e2e8f0;
-        }
-        
-        /* Ensure text colors */
-        .st-emotion-cache-10trblm {
-            color: #e2e8f0 !important;
-        }
-        
-        /* Fix any remaining white backgrounds */
-        div[data-testid="stToolbar"], div[data-testid="stDecoration"] {
-            background: transparent !important;
-        }
-        
-        /* Global Styles */
-        .stApp {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e2e8f0;
-        }
-        
-        /* Main Container */
-        .main-container {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-        }
-        
-        /* Headers */
-        h1, h2, h3 {
-            color: #60a5fa !important;
-            font-weight: 700;
-        }
-        
-        /* Navigation */
-        .stSelectbox label {
-            color: #e2e8f0 !important;
-        }
-        
-        /* Cards */
-        .card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            margin: 1rem 0;
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        .social-links img {
-            transition: transform 0.3s ease;
-            filter: brightness(0.9);
-        }
-        .social-links img:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.1);
-        }
-        
-        /* Input Fields */
-        .stTextInput > div > div {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #e2e8f0;
-        }
-        .stTextInput > div > div:focus-within {
-            border-color: #60a5fa;
-        }
-        
-        /* Custom Gradient Header */
-        .gradient-header {
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-            padding: 2rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Timeline */
-        .timeline-wrapper {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-        
-        /* PDF Viewer */
-        iframe {
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.02);
-        }
-        
-        /* Option Menu */
-        .nav-link {
-            color: #e2e8f0 !important;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            margin: 0.25rem 0;
-        }
-        .nav-link:hover, .nav-link.active {
-            background: #60a5fa !important;
-            color: white !important;
-        }
-        
-        /* Endorsements */
-        .endorsement-card {
-            background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-left: 4px solid #60a5fa;
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 def gradient(color1, color2, color3, content1, content2):
     st.markdown(f'''
@@ -381,31 +158,37 @@ def skills():
 
 #--------------------Leetcode/Github----------------------#
 
+import streamlit as st
+import streamlit.components.v1 as components
+
 def gitleet():
-    # Displaying LeetCode and GitHub Achievements
+    # Using Streamlit's header for styled headings
+    st.header("💻 LeetCode Achievements")
+    
+    # HTML for LeetCode card
     st.markdown("""
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-        <!-- LeetCode Card -->
-        <div>
-            <h3>💻 LeetCode Achievements</h3>
-            <a href="https://leetcode.com/huzaif027/" target="_blank">
-                <img align="top" src="https://leetcard.jacoblin.cool/huzaif027?theme=dark&font=Nunito&ext=heatmap" alt="LeetCode Profile" />
-            </a>
-        </div>
-        <div>
-            <h3>👾 GitHub Achievements</h3>
-            <a href="https://github.com/Sa1f27" target="_blank">
-                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sa1f27&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="GitHub Stats" />
-            </a>
-            <a href="https://github.com/Sa1f27" target="_blank">
-                <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sa1f27&theme=react&hide_border=false" alt="GitHub Streak Stats" />
-            </a>
-        </div>
-    </div>
+    <a href="https://leetcode.com/huzaif027/" target="_blank">
+        <img align="top" src="https://leetcard.jacoblin.cool/huzaif027?theme=dark&font=Nunito&ext=heatmap" alt="LeetCode Profile" />
+    </a>
     """, unsafe_allow_html=True)
+    
+    # GitHub section with Streamlit header
+    st.header("👾 GitHub Achievements")
+    
+    # HTML for GitHub cards
+    st.markdown("""
+    <a href="https://github.com/Sa1f27" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sa1f27&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="GitHub Stats" />
+    </a>
+    <a href="https://github.com/Sa1f27" target="_blank">
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sa1f27&theme=react&hide_border=false" alt="GitHub Streak Stats" />
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # Contribution calendar
     st.subheader("Contribution Calendar")
     components.html(
-        f"""
+        """
         <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"/>
         <div class="calendar">Loading...</div>
@@ -415,6 +198,7 @@ def gitleet():
         """,
         height=180
     )
+
 
 
 # ------------------- CONTACT ------------------- #

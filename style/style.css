@@ -1,78 +1,317 @@
-/* Change the sidebar color*/
-[data-testid=stSidebar] {
-  background-image: linear-gradient(#000395,#FFD4DD);
+/* Modern Portfolio Theme */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Style hyperlinks*/
-a{
-  display: block; 
-  color:#2e9aff !important;
-  font-weight: bold;
+/* Main Layout */
+.stApp {
+    background-color: #063D75 !important;
+    font-family: 'Poppins', sans-serif;
 }
 
-p{
-  color: white
+/* Fix Page Width */
+.block-container {
+    max-width: 100% !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
 }
 
-.st-ck {
-  caret-color: black;
+/* Typography */
+h1 {
+    color: #00FFDF !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: -0.02em;
 }
 
-.st-bh, .st-c2, .st-c3, .st-c4, .st-c5, .st-c6, .st-c7, .st-c8, .st-c9, .st-ca, .st-cb, .st-b8, .st-cc, .st-cd, .st-ce, .st-cf, .st-cg, .st-ch, .st-ci, .st-cj, .st-ae, .st-af, .st-ag, .st-ck, .st-ai, .st-aj, .st-c1, .st-cl, .st-cm, .st-cn {
-  color: black;
+h2 {
+    color: #00FFDF !important;
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+    margin: 2rem 0 1rem 0 !important;
 }
 
-/* Style the contact form */
-input[type=message], input[type=email], input[type=text], textarea {
-    width: 100%; 
-    padding: 12px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    margin-top: 6px;
-    margin-bottom: 16px; 
-    resize: vertical
+h3 {
+    color: #FAFAFA !important;
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+    margin: 1.5rem 0 0.75rem 0 !important;
 }
 
-/* Style the submit button with a specific background color etc */
-button[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+p {
+    color: #FAFAFA;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 1rem;
 }
 
-/* When moving the mouse over the submit button, add a darker green color */
-button[type=submit]:hover {
-  background-color: #45a049;
+/* Remove Lottie Animation Borders */
+[data-testid="stLottie"] {
+    border: none !important;
+    background: transparent !important;
 }
 
-/* Hide Streamlit Branding */
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
-
-
-/* Design Hyperlink */
-a:link , a:visited{
-color: blue;
-text-decoration: underline;
+/* Endorsement Cards with Special Gradient */
+.endorsement-card {
+    background: linear-gradient(135deg, rgba(0, 255, 223, 0.1) 0%, rgba(6, 61, 117, 0.3) 100%) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin: 1rem 0 !important;
+    border-left: 4px solid #00FFDF !important;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease;
 }
 
-a:hover,  a:active {
-color: red;
-text-decoration: underline;
+.endorsement-card:hover {
+    transform: translateY(-5px);
 }
 
+/* Project Cards */
+.project-card {
+    background-color: #262730;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(0, 255, 223, 0.1);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #00FFDF;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background-color: #262730 !important;
+    border-right: 1px solid rgba(0, 255, 223, 0.1);
+    padding-top: 2rem;
+}
+
+.sidebar .sidebar-content {
+    padding: 1.5rem;
+}
+
+/* Buttons */
+.stButton > button {
+    background-color: #00FFDF !important;
+    color: #063D75 !important;
+    padding: 0.75rem 2rem !important;
+    border-radius: 8px !important;
+    border: none !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stButton > button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Contact Form */
+.contact-form .stTextInput > div > div {
+    background-color: #262730 !important;
+    border: 1px solid rgba(0, 255, 223, 0.2) !important;
+    border-radius: 8px;
+    padding: 0.75rem !important;
+    color: #FAFAFA !important;
+}
+
+.contact-form .stTextInput > div > div:focus-within {
+    border-color: #00FFDF !important;
+    box-shadow: 0 0 0 2px rgba(0, 255, 223, 0.1);
+}
+
+/* Skills Section */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.skill-item {
+    background-color: #262730;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(0, 255, 223, 0.1);
+}
+
+/* Footer */
 .footer {
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-background-color: #001d6c;
-color: white;
-text-align: center;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(0, 255, 223, 0.1);
 }
 
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.social-link {
+    color: #00FFDF !important;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+}
+
+/* Hide Streamlit Components */
+#MainMenu {display: none}
+footer {display: none}
+header {display: none}
+
+/* Remove default streamlit margins */
+.css-1544g2n {
+    padding: 0 !important;
+}
+
+.css-1q1n0ol {
+    padding: 0 !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .block-container {
+        padding-left: 2% !important;
+        padding-right: 2% !important;
+    }
+    
+    h1 {
+        font-size: 2rem !important;
+    }
+}
+
+/* Skill Badge */
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  color: #e2e8f0;
+}
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.skill-icon {
+  margin-right: 0.5rem;
+  color: #60a5fa;
+}
+
+/* Project Card */
+.project-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+
+/* Project Title */
+.project-title {
+  color: #60a5fa;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Tech Stack */
+.tech-stack {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Section Header */
+.section-header {
+  color: #60a5fa;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+}
+
+/* Links */
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(96, 165, 250, 0.1);
+  border-radius: 8px;
+  color: #60a5fa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.project-link:hover {
+  background: rgba(96, 165, 250, 0.2);
+  transform: translateY(-2px);
+}
+.project-link i {
+  margin-right: 0.5rem;
+}
+
+/* Soft Skills */
+.soft-skill-item {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%);
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 0.75rem 0;
+  border-left: 4px solid #60a5fa;
+  backdrop-filter: blur(10px);
+}
+
+/* Streamlit Overrides */
+.stMarkdown {
+  color: #e2e8f0;
+}
+.stHeader {
+  color: #60a5fa !important;
+  font-weight: 700;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
