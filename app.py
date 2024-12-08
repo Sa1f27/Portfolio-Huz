@@ -64,6 +64,22 @@ def ask_groq(input_text):
 
 # ------------------- SIDEBAR ------------------- #
 
+# Add gradient to the sidebar
+def apply_sidebar_gradient(color1, color2, color3):
+    st.markdown(
+        f"""
+        <style>
+        [data-testid="stSidebar"] {{
+            background: linear-gradient(to bottom, {color1}, {color2}, {color3});
+            border-radius: 10px;
+            padding: 10px;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+apply_sidebar_gradient('#FFD4DD','#000395','#e0fbfc')
+
 with st.sidebar:
     selected = option_menu(
         menu_title="Main Menu",
@@ -71,21 +87,22 @@ with st.sidebar:
         icons=["house", "graph-up", "person"],
         menu_icon="cast",
         default_index=0,
+        styles={
+        "container": {"padding": "5px", "background-color": "#063D75"},  # Background of the sidebar
+        "nav-link": {
+            "font-size": "16px",
+            "text-align": "left",
+            "margin": "5px",
+            "--hover-color": "#262730",  # Hover color for links
+        },
+        "nav-link-selected": {
+            "background-color": "cyan",  # Color for the selected tab
+            "color": "black",  # Text color for the selected tab
+        },
+    },
     )
 
 # ------------------- HOME PAGE ------------------- #
-
-def gradient(color1, color2, color3, content1, content2):
-    st.markdown(f'''
-        <div class="gradient-header">
-            <h1 style="color: white; font-size: 3rem; margin-bottom: 0.5rem;">
-                {content1}
-            </h1>
-            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.2rem;">
-                {content2}
-            </p>
-        </div>
-    ''', unsafe_allow_html=True)
 
 def gradient1(color1, color2, color3, content1, content2):
     st.markdown(f'<h1 style="text-align:center;background-image: linear-gradient(to right,{color1}, {color2});font-size:60px;border-radius:2%;">'
@@ -100,7 +117,7 @@ def Home_Page():
     with st.container():
         col1, col2 = st.columns([8, 3])
         with col1:
-            gradient1('#FFD4DD','#000395','e0fbfc', f"Hi, I'm {full_name}👋", info["Intro"])
+            gradient1('#FFD4DD','#000395','#e0fbfc', f"Hi, I'm {full_name}👋", info["Intro"])
   
             
             # Display Social Links with Emojis side by side
