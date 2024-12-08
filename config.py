@@ -1,3 +1,5 @@
+import streamlit as st
+import streamlit.components.v1 as components
 
 info = {
    "Pronoun": "Him",
@@ -112,6 +114,58 @@ INTERESTS = [
         "description": "Competing in hackathons to develop innovative solutions under pressure."
     }
 ]
+
+html_code = """
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<dotlottie-player 
+    src="https://lottie.host/99cb5d48-31ac-49de-a7b3-096b769beae0/x7Y2HyZsp6.lottie" 
+    background="transparent" 
+    speed="1" 
+    style="width: 250px; height: 250px" 
+    loop 
+    autoplay>
+</dotlottie-player>
+"""
+#--------------------Leetcode/Github----------------------#
+def gitleet():
+    st.markdown("# My Technical Journey")
+    # Using Streamlit's header for styled headings
+    st.header("💻 LeetCode Achievements")
+    
+    # HTML for LeetCode card
+    st.markdown("""
+    <a href="https://leetcode.com/huzaif027/" target="_blank">
+        <img align="top" src="https://leetcard.jacoblin.cool/huzaif027?theme=dark&font=Nunito&ext=heatmap" alt="LeetCode Profile" />
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # GitHub section with Streamlit header
+    st.header("👾 GitHub Achievements")
+    
+    # HTML for GitHub cards
+    st.markdown("""
+    <a href="https://github.com/Sa1f27" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sa1f27&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="GitHub Stats" />
+    </a>
+    <a href="https://github.com/Sa1f27" target="_blank">
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sa1f27&theme=react&hide_border=false" alt="GitHub Streak Stats" />
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # Contribution calendar
+    st.subheader("Contribution Calendar")
+    components.html(
+        """
+        <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"/>
+        <div class="calendar">Loading...</div>
+        <script>
+            GitHubCalendar(".calendar", "Sa1f27");
+        </script>
+        """,
+        height=180
+    )
+
 
 # Theme and Style Settings
 THEME_COLOR = "#FF4B4B"

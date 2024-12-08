@@ -1,18 +1,5 @@
 /* Modern Portfolio Theme */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-/* Remove Lottie Animation Borders */
-[data-testid="stLottie"] {
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important; 
-  background: transparent !important;/* Added to remove any potential box-shadow */
-}
-
-/* Optional: Ensure there are no padding/margin issues for the Lottie container */
-[data-testid="stLottie"] > div {
-  padding: 0 !important;
-  margin: 0 !important;
-}
 
 /* Reset and Base Styles */
 * {

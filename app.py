@@ -4,12 +4,10 @@ st.set_page_config(page_title="Huzaifah's Portfolio", layout="wide", page_icon='
 
 import requests
 import uuid
-from streamlit_lottie import st_lottie
-from streamlit_timeline import timeline
 import streamlit.components.v1 as components
 from PIL import Image
 from groq import Groq
-from config import info, endorsements, SOCIAL_LINKS
+from config import info, endorsements, gitleet, html_code
 from sections.about import show_about, show_education
 from sections.projects import PortfolioApp
 from sections.contact import show_contact, render_coworker_endorsements
@@ -24,18 +22,6 @@ with open("bio.txt", "r") as file:
     bio_info = file.read()
 
 # ------------------- FUNCTIONS ------------------- #
-
-def load_lottie_url(url: str):
-    try:
-        r = requests.get(url)
-        if r.status_code != 200:
-            raise Exception(f"Failed to load Lottie animation, status code {r.status_code}")
-        return r.json()
-    except Exception as e:
-        st.error(f"Error loading Lottie animation: {e}")
-        return None
-
-lottie_gif = load_lottie_url("https://assets9.lottiefiles.com/packages/lf20_x17ybolp.json")
 # Load custom CSS
 def local_css(file_name):
     with open(file_name, "r") as f:  # Explicitly use "r" mode for readability
@@ -150,7 +136,7 @@ def Home_Page():
     st.markdown("---")
 
     
-    col5, col6 = st.columns([7, 3])
+    col5, col6 = st.columns([8, 3])
     with col5:
         user_input = st.text_input("Ask any question about my portfolio!", key="input")
         if user_input:
@@ -159,7 +145,7 @@ def Home_Page():
         else:
             st.write("Hi, I'm Mohammed Huzaifah. I'm a passionate Machine Learning Engineer with a strong foundation in AI, Data Science and MLOps. Currently, I'm pursuing my degree in Computer Science with specialization in AI/ML. With experience in hackathons, innovative project implementations, and contributing to open-source projects, I'm confident in my ability to design, develop, and deploy scalable AI solutions. I'm immediately available for internship or project opportunities.")
     with col6:
-        st_lottie(lottie_gif, height=280, key="data")
+        st.components.v1.html(html_code, height=250)
     st.markdown("---")
 
     
@@ -188,51 +174,6 @@ def skills():
     st.markdown("---")
     portfolio = PortfolioApp()
     portfolio.run()
-
-#--------------------Leetcode/Github----------------------#
-
-import streamlit as st
-import streamlit.components.v1 as components
-
-def gitleet():
-    # Using Streamlit's header for styled headings
-    st.header("💻 LeetCode Achievements")
-    
-    # HTML for LeetCode card
-    st.markdown("""
-    <a href="https://leetcode.com/huzaif027/" target="_blank">
-        <img align="top" src="https://leetcard.jacoblin.cool/huzaif027?theme=dark&font=Nunito&ext=heatmap" alt="LeetCode Profile" />
-    </a>
-    """, unsafe_allow_html=True)
-    
-    # GitHub section with Streamlit header
-    st.header("👾 GitHub Achievements")
-    
-    # HTML for GitHub cards
-    st.markdown("""
-    <a href="https://github.com/Sa1f27" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sa1f27&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="GitHub Stats" />
-    </a>
-    <a href="https://github.com/Sa1f27" target="_blank">
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sa1f27&theme=react&hide_border=false" alt="GitHub Streak Stats" />
-    </a>
-    """, unsafe_allow_html=True)
-    
-    # Contribution calendar
-    st.subheader("Contribution Calendar")
-    components.html(
-        """
-        <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"/>
-        <div class="calendar">Loading...</div>
-        <script>
-            GitHubCalendar(".calendar", "Sa1f27");
-        </script>
-        """,
-        height=180
-    )
-
-
 
 # ------------------- CONTACT ------------------- #
 
