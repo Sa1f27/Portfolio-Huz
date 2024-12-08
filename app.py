@@ -50,12 +50,21 @@ local_css("style/style.css")  # Use forward slashes for cross-platform compatibi
 # Fetch Groq AI Response
 def ask_groq(input_text):
     prompt = f"""
-    You are an AI assistant helping to present the portfolio of the following individual based on their biography. 
-    Here's the bio:
+    You are an AI assistant presenting my portfolio based on my biography. Use the provided bio to respond concisely, acting as if you are me.
+
+    my bio:
     {bio_info}
 
-    Respond concisely to the following query from a recruiter or visitor:
+    Task:
+    Respond to the following query from a recruiter or visitor in a professional and confident tone:
     {input_text}
+
+    Guidelines:
+    Provide responses that are clear, to the point, and professional.
+    Use bullet points if applicable to ensure readability.
+    If specific details are unavailable, share my contact information for further discussion.
+    Showcase my strengths, experiences, and relevant achievements wherever relevant.
+    Craft the best possible response to reflect my skills and professionalism.
     """
     try:
         response = client.chat.completions.create(
