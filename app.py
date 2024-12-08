@@ -170,10 +170,10 @@ def resume():
 # ------------------- SKILLS AND PROJECTS ------------------- #
 
 def skills():
-    gitleet()
-    st.markdown("---")
     portfolio = PortfolioApp()
     portfolio.run()
+    gitleet()
+    st.markdown("---")
 
 # ------------------- CONTACT ------------------- #
 

@@ -83,42 +83,40 @@ class PortfolioApp:
     def run(self):
         # Main container with padding
         st.markdown('<div style="padding: 2rem 0;">', unsafe_allow_html=True)
-        
-        # Two-column layout
-        col1, col2 = st.columns([5, 3])
 
-        with col1:
-            st.header("Featured Projects")
-            for project in PROJECTS:
-                self.show_project_card(project)
-                st.markdown("---")
-                st.markdown('<div class="skills-grid">', unsafe_allow_html=True)
+        # Row 1: Projects side by side
+        st.header("Featured Projects")
+        project_cols = st.columns(len(PROJECTS))  # Create a column for each project
         
-        with col2:
-            st.header("Skills & Expertise")
-            
-            # Programming Languages
-            self.show_skills_section("Programming Languages", SKILLS['programming_languages'])
-            
-            # Other technical sections
-            tech_sections = {
-                "Machine Learning": SKILLS.get('machine_learning_frameworks', []),
-                "Cloud Technologies": SKILLS.get('cloud_technologies', []),
-                "Data Management": SKILLS.get('data_management', []),
-                "Data Visualization": SKILLS.get('data_visualization', [])
-            }
-            
-            for title, skills in tech_sections.items():
+        for col, project in zip(project_cols, PROJECTS):
+            with col:
+                self.show_project_card(project)  # Display project card
+
+        # Separator
+        st.markdown("<hr style='margin: 2rem 0;'>", unsafe_allow_html=True)
+
+        # Row 2: Skills side by side
+        st.header("Skills & Expertise")
+        skill_categories = {
+            "Programming Languages": SKILLS.get('programming_languages', []),
+            "Machine Learning": SKILLS.get('machine_learning_frameworks', []),
+            "Cloud Technologies": SKILLS.get('cloud_technologies', []),
+            "Data Management": SKILLS.get('data_management', []),
+            "Data Visualization": SKILLS.get('data_visualization', []),
+            "Tools & Platforms": SKILLS.get('tools', []),
+            "Soft Skills": SKILLS.get('soft_skills', [])
+        }
+
+        skill_cols = st.columns(len(skill_categories))  # Create a column for each skill category
+        
+        for col, (title, skills) in zip(skill_cols, skill_categories.items()):
+            with col:
                 if skills:
                     self.show_skills_section(title, skills)
-            
-            # Tools & Platforms
-            self.show_skills_section("Tools & Platforms", SKILLS['tools'])
-            
-            # Soft Skills
-            self.show_soft_skills()
-        
+
+        # Closing the container
         st.markdown('</div>', unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     portfolio = PortfolioApp()

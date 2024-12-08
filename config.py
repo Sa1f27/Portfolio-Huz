@@ -128,43 +128,50 @@ html_code = """
 """
 #--------------------Leetcode/Github----------------------#
 def gitleet():
-    st.markdown("# My Technical Journey")
-    # Using Streamlit's header for styled headings
+    # Main Title
+    st.markdown("# 🚀 My Technical Journey")
+
+    # Section 1: LeetCode Achievements
     st.header("💻 LeetCode Achievements")
-    
-    # HTML for LeetCode card
     st.markdown("""
     <a href="https://leetcode.com/huzaif027/" target="_blank">
         <img align="top" src="https://leetcard.jacoblin.cool/huzaif027?theme=dark&font=Nunito&ext=heatmap" alt="LeetCode Profile" />
     </a>
     """, unsafe_allow_html=True)
-    
-    # GitHub section with Streamlit header
+
+    # Separator
+    st.markdown("<hr style='margin: 2rem 0;'>", unsafe_allow_html=True)
+
+    # Section 2: GitHub Achievements
     st.header("👾 GitHub Achievements")
     
-    # HTML for GitHub cards
+    # Row 1: GitHub Stats
+    github_stats_cols = st.columns(2)
+    with github_stats_cols[0]:
+        st.markdown("""
+        <a href="https://github.com/Sa1f27" target="_blank">
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sa1f27&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="GitHub Top Languages" />
+        </a>
+        """, unsafe_allow_html=True)
+    with github_stats_cols[1]:
+        st.markdown("""
+        <a href="https://github.com/Sa1f27" target="_blank">
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sa1f27&theme=react&hide_border=false" alt="GitHub Streak Stats" />
+        </a>
+        """, unsafe_allow_html=True)
+
+    # Separator
+    st.markdown("<hr style='margin: 2rem 0;'>", unsafe_allow_html=True)
+
+    # Section 3: GitHub Contribution Calendar
+    st.subheader("📆 Contribution Calendar")
     st.markdown("""
     <a href="https://github.com/Sa1f27" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sa1f27&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="GitHub Stats" />
-    </a>
-    <a href="https://github.com/Sa1f27" target="_blank">
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sa1f27&theme=react&hide_border=false" alt="GitHub Streak Stats" />
+        <img src="https://ghchart.rshah.org/Sa1f27" alt="GitHub Contribution Chart" style="width: 1000px; height: 170px; object-position: right;" />
     </a>
     """, unsafe_allow_html=True)
-    
-    # Contribution calendar
-    st.subheader("Contribution Calendar")
-    components.html(
-        """
-        <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"/>
-        <div class="calendar">Loading...</div>
-        <script>
-            GitHubCalendar(".calendar", "Sa1f27");
-        </script>
-        """,
-        height=180
-    )
+
+
 
 
 # Theme and Style Settings
