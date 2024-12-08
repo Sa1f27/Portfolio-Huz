@@ -1,9 +1,9 @@
 
 info = {
-   "Pronoun": "Him", 
+   "Pronoun": "Him",
    "Name": "Huzaifah",
    "Full_Name": "Md Huzaifah",
-   "Intro": "An AI and ML Enthusiast",
+   "Intro": "Machine Learning and AI Enthusiast | Developer | Hacker | Problem Solver",
    "LinkedIn":"https://www.linkedin.com/in/huzaifah-27o3/",
    "City":"Hyderabad, India",
    "Photo": """<a href="https://www.linkedin.com/in/huzaifah-27o3/"><img src="images\huz-bat.png" width="200" alt="Profile" title="Profile"></a>""",
@@ -31,7 +31,7 @@ endorsements = [
 # Personal Information
 PERSONAL_INFO = {
     "name": "Huzaifah",
-    "title": "Computer Science Student | Aspiring Machine Learning Engineer",
+    "title": "Computer Science Student | Aspiring AI & Machine Learning Engineer",
     "email": "huzaif027@gmail.com",
     "github": "https://github.com/Sa1f27",
     "linkedin": "https://www.linkedin.com/in/huzaifah-27o3/",
@@ -47,15 +47,14 @@ PROJECTS = [
     {
         "title": "KidsCare Pro",
         "description": "Smart pediatric health solution for monitoring children's growth and development.",
-        "tech_stack": ["Python", "AWS", "Streamlit"],
+        "tech_stack": ["Python", "AWS", "Scikit-learn", "LightGBM", "Llama"],
         "github_link": "https://github.com/Sa1f27/KidsCare-Pro.git",
-        # "demo_link": "https://yourdemo.com/kidscare-pro",
         "image": r"images/kids.png"
     },
     {
         "title": "Disease Prediction",
         "description": "Machine learning model to predict disease using modular code.",
-        "tech_stack": ["Python", "Scikit-learn", "Cassandra"],
+        "tech_stack": ["KNN Classifier", "Scikit-learn", "Tensorflow", "Gemini"],
         "github_link": "https://github.com/Sa1f27/Disease-Prediction.git",
         "image": r"images/health.png"
     }
@@ -63,13 +62,13 @@ PROJECTS = [
 
 # Education Details
 EDUCATION = {
-    "university": "Your University Name",
+    "university": "Lords Institute of Engineering and Technology",
     "degree": "Bachelor of Technology in Computer Science",
     "duration": "2022 - 2026",
     "gpa": "8.7/10",
     "relevant_courses": [
         "Machine Learning",
-        "Natural Language Processing",
+        "Artificial Intelligence",
         "Data Structures & Algorithms",
         "Database Systems"
     ]
